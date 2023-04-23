@@ -1,0 +1,21 @@
+{
+  "files.associations": {
+    "*.py": "python",
+    "types.h": "c",
+    "shm.h": "c",
+    "time.h": "c",
+    "errno.h": "c",
+    "message.h": "c",
+    "semaphore.h": "c",
+    "signal.h": "c",
+    "ipc.h": "c",
+    "wait.h": "c",
+    "unistd.h": "c",
+    "stdlib.h": "c",
+    "stdio.h": "c",
+    "sem.h": "c",
+    "mqueue.h": "c",
+    "msg.h": "c",
+    "fcntl.h": "c"
+  }
+}
