@@ -1,12 +1,14 @@
 #! /usr/bin/bash
 
 function ctrl_c(){
-  echo "destroying"
+  ./stopper
   for fpid in ${fpids[@]}
   do
-  kill -s INT $fpid 
+    if ps -p $fpid > /dev/null
+    then
+      kill -n 2 $fpid
+    fi
   done
-  return
 }
 
 trap ctrl_c INT

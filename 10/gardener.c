@@ -25,10 +25,8 @@ char* msg;
 
 void ctrl_c(int blank) {
     flg = 0;
-    msg[0] = 100;
-    for (int i = 0; i < 40; ++i) {
-        mq_send(gtofid, msg, 1, 100);
-    }
+    free(msg);
+    exit(0);
 }
 
 void sys_err(char* msg) {
@@ -75,21 +73,11 @@ int main(int argc, char* argv[]) {
             }
             usleep(1000 * 200);
             msg[0] = msg[0];
-            mq_send(ftogid, msg, 1, 1);
+            mq_send(gtofid, msg, 1, 1);
             printf("%d:Watered flower %d\n", id + 1, msg[0]);
         }
     }
 
     free(msg);
-
-    if (mq_close(ftogid) == -1) {
-    }
-    if (mq_close(gtofid) == -1) {
-    }
-    if (mq_unlink("/ftog") == -1) {
-    }
-    if (mq_unlink("/gtof") == -1) {
-    };
-    printf("%d\n", errno);
     return 0;
 }

@@ -1,7 +1,7 @@
 #! /usr/bin/bash
 
 function ctrl_c() {
-    echo "destruction"
+    ./stopper
 }
 
 trap ctrl_c INT

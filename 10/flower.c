@@ -19,6 +19,7 @@ int flg = 1;
 
 void ctrl_c(int blank) {
     flg = 0;
+    exit(0);
 }
 
 void sys_err(char* msg) {
@@ -48,11 +49,10 @@ int main(int argc, char* argv[]) {
     ftogid = mq_open("/ftog", O_WRONLY, PERMS, &attr);
     gtofid = mq_open("/gtof", O_RDONLY, PERMS, &attr);
     if (ftogid == -1) {
-        sys_err("AAAAAAAA");
+        sys_err("Can't open queue");
     }
 
     char* msg = (char*)malloc(1 * sizeof(char));
-    printf("%d %d\n", ftogid, gtofid);
     printf("Flower %d created.\n", id + 1);
     // srand(id);
 
@@ -64,16 +64,20 @@ int main(int argc, char* argv[]) {
             }
             printf("Flower %d is withering\n", id + 1);
             sleep(10);
-            mq_receive(gtofid, msg, 1, NULL);
+
             if (msg[0] == 100) {
                 break;
             }
+
+            if (mq_receive(gtofid, msg, 1, NULL) == -1) {
+                printf("%d\n", errno);
+            }
+            printf("Flower %d is watered\n", msg[0]);
             if (msg[0] != id + 1) {
                 printf("Flower %d is dead ☠️ ☠️ ☠️ bruh\n", id + 1);
                 return 0;
-            } else {
-                printf("Flower %d is watered", msg[0]);
             }
+
         } else {
             sleep(1);
         }

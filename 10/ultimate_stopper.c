@@ -1,4 +1,5 @@
 #include <fcntl.h>
+#include <mqueue.h>
 #include <stdlib.h>
 #include <sys/mman.h>
 #include <time.h>
@@ -12,33 +13,36 @@ void sys_err(char* msg) {
 }
 
 int main() {
-    int shmid;
+    mqd_t ftogid, gtofid;
 
-    sh_mem* shared;
+    struct mq_attr attr;
 
-    if ((shmid = shmget(SHM_ID, sizeof(sh_mem), PERMS | IPC_CREAT)) == -1) {
-        char msg[100];
-        sprintf(msg, "Cannot get shared memory segment. Shared memory name:%s\n", SHM_NAME);
-        sys_err(msg);
+    attr.mq_flags = 0;
+    attr.mq_maxmsg = 40;
+    attr.mq_msgsize = 1;
+    attr.mq_curmsgs = 0;
+
+    ftogid = mq_open("/ftog", O_RDONLY | O_CREAT | O_EXCL, PERMS, &attr);
+    if (ftogid == -1) {
+        ftogid = mq_open("/ftog", O_RDONLY, PERMS, &attr);
     }
 
-    if ((shared = (sh_mem*)shmat(shmid, 0, 0)) == NULL) {
-        char msg[100];
-        sprintf(msg, "Shared memory attach error. Shared memory id:%#010x\n", shmid);
-        sys_err(msg);
+    gtofid = mq_open("/gtof", O_WRONLY | O_CREAT | O_EXCL, PERMS, &attr);
+    if (gtofid == -1) {
+        gtofid = mq_open("/gtof", O_WRONLY, PERMS, &attr);
     }
 
-    if (shared->type == MSG_TYPE_FINISH) {
-        return 0;
+    if (mq_close(ftogid) == -1) {
+        sys_err("Can't close q");
     }
-
-    shared->type = MSG_TYPE_FINISH;
-    sleep(1);
-
-    shmdt(shared);
-
-    if (shmctl(shmid, IPC_RMID, (struct shmid_ds*)0) == -1) {
-        sys_err("Shared memory remove error");
+    if (mq_close(gtofid) == -1) {
+        sys_err("Can't close q");
+    }
+    if (mq_unlink("/ftog") == -1) {
+        sys_err("Can't close q");
+    }
+    if (mq_unlink("/gtof") == -1) {
+        sys_err("Can't close q");
     }
     return 0;
 }
