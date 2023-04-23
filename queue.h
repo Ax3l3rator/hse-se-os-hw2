@@ -3,8 +3,6 @@
 #define ACTION_WATERING 3
 #define MTYPE_FINISH 127
 
-#include <stdio.h>
-#include <stdlib.h>
 #include <sys/ipc.h>
 
 typedef struct msgbuf {

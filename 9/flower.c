@@ -17,6 +17,7 @@ int flg = 1;
 
 void ctrl_c(int blank) {
     flg = 0;
+    exit(0);
 }
 
 void sys_err(char* msg) {
@@ -86,11 +87,6 @@ int main(int argc, char* argv[]) {
     }
     mbuf->mtype = MTYPE_FINISH;
     msgsnd(ftogid, mbuf, sizeof(int) * 40, IPC_NOWAIT);
-    if (msgctl(gtofid, IPC_RMID, 0) == -1) {
-        sys_err("Failed to remove queue\n");
-    }
-    if (msgctl(ftogid, IPC_RMID, 0) == -1) {
-        sys_err("Failed to remove queue\n");
-    }
+
     return 0;
 }

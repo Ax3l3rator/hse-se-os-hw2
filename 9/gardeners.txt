@@ -1,0 +1,76 @@
+Flower 1 created.
+Flower 2 created.
+Flower 4 created.
+Flower 3 created.
+Flower 5 created.
+Flower 6 created.
+Flower 7 created.
+Flower 9 created.
+Flower 8 created.
+Flower 10 created.
+Flower 12 created.
+Flower 11 created.
+Flower 13 created.
+Flower 14 created.
+Flower 15 created.
+Flower 17 created.
+Flower 18 created.
+Flower 19 created.
+Flower 16 created.
+Flower 20 created.
+Flower 22 created.
+Flower 23 created.
+Flower 21 created.
+Flower 24 created.
+Flower 26 created.
+Flower 25 created.
+Flower 27 created.
+Flower 29 created.
+Flower 31 created.
+Flower 28 created.
+Flower 32 created.
+Flower 34 created.
+Flower 35 created.
+Flower 30 created.
+Flower 33 created.
+Flower 36 created.
+Flower 38 created.
+Flower 40 created.
+Flower 39 created.
+Flower 37 created.
+Flower 37 is withering
+Flower 6 is withering
+Flower 31 is withering
+Flower 33 is withering
+Flower 16 is withering
+Flower 32 is withering
+Flower 7 is withering
+Flower 34 is withering
+Flower 26 is withering
+Flower 35 is withering
+Flower 5 is withering
+Flower 10 is withering
+Flower 19 is withering
+Flower 33 is withering
+Flower 40 is withering
+Flower 20 is withering
+Flower 39 is withering
+Flower 24 is withering
+Flower 36 is withering
+Flower 3 is withering
+Flower 30 is withering
+Flower 10 is withering
+Flower 37 is withering
+Flower 5 is withering
+Flower 6 is withering
+Flower 18 is withering
+Flower 34 is withering
+Flower 39 is withering
+Flower 29 is withering
+Flower 32 is withering
+Flower 21 is withering
+Flower 13 is withering
+Flower 23 is withering
+Flower 22 is withering
+Flower 3 is withering
+Flower 36 is withering
